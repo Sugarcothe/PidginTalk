@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PidginBox</title>
+    <link rel="icon" href="/img/favi.png">
+    <link rel="stylesheet" href="/css/styles.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+
+<body>
+    <div class="chat">
+        <div id="sidebar" class="chat__sidebar">
+
+        </div>
+        <div class="chat__main">
+            <div id="messages" class="chat__messages"></div>
+
+            <div class="compose">
+                <form id="message-form">
+                    <input name="message" required placeholder="Message" autocomplete="off">
+                    <button><i class="far fa-paper-plane"></i></button>
+                </form>
+                <button id="send-location"><i class="fas fa-map-marked-alt"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+    <script id = "sidebar-template" type="text/html">
+        <h2 class="room-title">{{room}}</h2>
+        <h3 class="list-title">Users</h3>
+        <ul class='users'>
+            {{#users}}
+                <li>{{username}}</li>
+            {{/users}}
+        </ul>
+    </script>
+
+    <script id="message-template" type="text/html">
+            <div class="message">
+                <p>
+                    <span class="message__name">{{username}}</span>
+                    <span class="message__meta">{{createdAt}}</span>
+                </p>
+                <p>{{message}}</p>
+            </div>
+        </script>
+
+    <script id="location-message-template" type="text/html">
+            <div class="message">
+                <p>
+                    <span class="message__name">{{username}}</span>
+                    <span class="message__meta">{{createdAt}}</span>
+                </p>
+                <p><a href="{{url}}" target="_blank">My current location</a></p>
+            </div>
+        </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+
+</html>
